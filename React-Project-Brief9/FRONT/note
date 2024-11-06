@@ -1,0 +1,65 @@
+import {useState} from 'react'
+
+function AddUser () {
+
+
+const [user, setUser] = useState({
+firstName: '',
+lastName: '',
+email: '',
+password: '',
+});
+
+
+const handleChange = (e) => {
+const { name, value } = e.target; // name = password, value : "password"
+setUser({
+...user,
+[name]: value, // dynamic properties js
+});
+};
+
+// user = { firstname : "youssef", lastname : "ahmed", email : "ahmed@gmail.com", password : "password" }
+
+const handleSubmit = (event) => {
+event.preventDefault();
+console.log(user); // Process formData on form submission
+};
+
+return (
+<form onSubmit={handleSubmit}>
+<input
+type="text"
+name="firstName"
+value={user.firstName}
+onChange={handleChange}
+placeholder="First Name"
+/>
+<input
+type="text"
+name="lastName"
+value={user.lastName}
+onChange={handleChange}
+placeholder="Last Name"
+/>
+<input
+type="email"
+name="email"
+value={user.email}
+onChange={handleChange}
+placeholder="Email"
+/>
+<input
+type="password"
+name="password"
+value={user.password}
+onChange={handleChange}
+placeholder="Password"
+/>
+<button type="submit">Submit</button>
+</form>
+);
+
+}
+
+export default AddUser
